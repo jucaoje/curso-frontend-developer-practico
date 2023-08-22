@@ -167,6 +167,7 @@
       position: absolute;
       right: 0;
       background-color: var(--white);
+      
     }
     .title-container {
       display: flex;
@@ -246,6 +247,7 @@
     }
     .product-card {
       width: 240px;
+      cursor: pointer;
     }
     .product-card img {
       width: 240px;
@@ -283,6 +285,8 @@
       /*padding-bottom: 24px;*/
       position: absolute;
       right: 0;
+     background-color: var(--white);
+     height: 1000px;
     }
     .product-detailSecundary-close {
       background: var(--white);

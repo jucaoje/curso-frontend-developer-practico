@@ -6,6 +6,10 @@ const menuMobile = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const aside =document.querySelector('.product-detail');
 const cardContainer = document.querySelector('.cards-container');
+const productDetailSecundary = document.querySelector('.product-detailSecundary');
+
+const productDetailSecundaryClose = document.querySelector('.product-detailSecundary-close');
+
 //esta es la forma corta se remplaza el nombre de la funcion parentesis                               se coloca  la   la flecha y dentro de las llaves se coloca lo que va hacer la funcion, la de abajo es lo forma convencional.
 menuEmail.addEventListener('click', ()=> {   
     const isAsideClosed = aside.classList.contains('inactive');
@@ -14,6 +18,9 @@ menuEmail.addEventListener('click', ()=> {
       aside.classList.add('inactive');
     }
     desktopMenu.classList.toggle('inactive');
+    productDetailSecundary.classList.add('inactive');
+
+    
 })
 
 menuMobile.addEventListener('click', ()=> {   
@@ -23,6 +30,9 @@ menuMobile.addEventListener('click', ()=> {
       aside.classList.add('inactive'); 
     } 
     mobileMenu.classList.toggle('inactive');
+    productDetailSecundary.classList.add('inactive');
+
+    
 })
 menuCarritoIcon.addEventListener('click', ()=> {  
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
@@ -31,7 +41,13 @@ menuCarritoIcon.addEventListener('click', ()=> {
       mobileMenu.classList.add('inactive'); 
     }
     aside.classList.toggle('inactive');
+    productDetailSecundary.classList.add('inactive');
+
+
+    
 })
+
+
 
 const productList = [];
 productList.push({
@@ -75,6 +91,10 @@ productList.push({
   image:  'https://picsum.photos/640/640?r=2483',
 });
 
+/* Product detail secundary */
+
+
+
 
 function renderProducts(arr){
   for (product of productList){
@@ -83,7 +103,16 @@ function renderProducts(arr){
   
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
-  
+    productImg.addEventListener('click',()=>{
+    productDetailSecundary.classList.remove('inactive');
+    aside.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+
+      
+
+    });
+    
+    
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
   
@@ -111,11 +140,14 @@ function renderProducts(arr){
     productCard.appendChild(productInfo);
   
     cardContainer.appendChild(productCard);
-  
-  
-  
-  
-  
   }
 }
 renderProducts(productList);
+
+productDetailSecundaryClose.addEventListener('click', ()=> {
+  productDetailSecundary.classList.add('inactive');
+})
+
+const iconClose = document.createElement('img');
+iconClose.setAttribute('src', './icons/icon_close.png');
+productDetailSecundaryClose.appendChild(iconClose);
