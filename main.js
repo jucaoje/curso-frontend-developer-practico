@@ -1,3 +1,4 @@
+let cantidadNumbercart =0;
 const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
@@ -9,6 +10,7 @@ const cardContainer = document.querySelector('.cards-container');
 const productDetailSecundary = document.querySelector('.product-detailSecundary');
 
 const productDetailSecundaryClose = document.querySelector('.product-detailSecundary-close');
+const cantidadcart = document.querySelector('.cantidadCart');
 
 //esta es la forma corta se remplaza el nombre de la funcion parentesis                               se coloca  la   la flecha y dentro de las llaves se coloca lo que va hacer la funcion, la de abajo es lo forma convencional.
 menuEmail.addEventListener('click', ()=> {   
@@ -128,10 +130,18 @@ function renderProducts(arr){
     productInfoDiv.appendChild(productName);
   
     const productInfoFigure =document.createElement ('figure');
+    
     const productImgCart = document.createElement('img');
     productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg');
   
     productInfoFigure.appendChild(productImgCart);
+    productImgCart.addEventListener ('click', ()=> {
+
+      cantidadNumbercart++;
+      cantidadcart.innerText= cantidadNumbercart;
+    
+    });
+
   
     productInfo.appendChild(productInfoDiv);
     productInfo.appendChild(productInfoFigure);
@@ -144,6 +154,8 @@ function renderProducts(arr){
 }
 renderProducts(productList);
 
+
+
 productDetailSecundaryClose.addEventListener('click', ()=> {
   productDetailSecundary.classList.add('inactive');
 })
@@ -151,3 +163,6 @@ productDetailSecundaryClose.addEventListener('click', ()=> {
 const iconClose = document.createElement('img');
 iconClose.setAttribute('src', './icons/icon_close.png');
 productDetailSecundaryClose.appendChild(iconClose);
+
+
+/*setAttribute('src', imgCart);*/
